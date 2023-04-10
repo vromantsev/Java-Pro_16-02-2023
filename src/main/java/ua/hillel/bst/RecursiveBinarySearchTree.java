@@ -1,6 +1,7 @@
 package ua.hillel.bst;
 
 import java.util.Objects;
+import java.util.function.Consumer;
 
 public class RecursiveBinarySearchTree<T extends Comparable<T>> implements BinarySearchTree<T> {
 
@@ -57,26 +58,77 @@ public class RecursiveBinarySearchTree<T extends Comparable<T>> implements Binar
 
     @Override
     public boolean contains(T element) {
-        return false;
+        Objects.requireNonNull(element);
+        return contains(root, element);
+    }
+
+    private boolean contains(Node<T> node, T element) {
+        if (node == null) {
+            return false;
+        }
+        var result = node.getElement().compareTo(element);
+        if (result > 0) {
+            return contains(node.getLeft(), element);
+        } else if (result < 0) {
+            return contains(node.getRight(), element);
+        } else {
+            return true;
+        }
     }
 
     @Override
     public T findMin() {
-        return null;
+        T min = null;
+        if (this.root != null) {
+            var rootCopy = this.root;
+            while (rootCopy.getLeft() != null) {
+                var left = rootCopy.getLeft();
+                min = left.getElement();
+                rootCopy = rootCopy.getLeft();
+            }
+        }
+        return min;
     }
 
     @Override
     public T findMax() {
-        return null;
+        T max = null;
+        if (this.root != null) {
+            var rootCopy = this.root;
+            while (rootCopy.getRight() != null) {
+                var right = rootCopy.getRight();
+                max = right.getElement();
+                rootCopy = rootCopy.getRight();
+            }
+        }
+        return max;
     }
 
     @Override
     public int depth() {
-        return 0;
+        if (this.root == null) {
+            return 0;
+        }
+        return Math.max(depth(root.getLeft()), depth(root.getRight()));
+    }
+
+    private int depth(Node<T> node) {
+        if (node == null) {
+            return 0;
+        }
+        return Math.max(1 + depth(node.getLeft()), 1 + depth(node.getRight()));
     }
 
     @Override
     public void inOrderTraversal() {
+        inOrderTraversal(root, value -> System.out.printf("%d ", value));
+    }
 
+    private void inOrderTraversal(Node<T> node, Consumer<T> action) {
+        if (node != null) {
+            inOrderTraversal(node.getLeft(), action);
+            action.accept(node.getElement());
+            inOrderTraversal(node.getRight(), action);
+        }
     }
 }
