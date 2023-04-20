@@ -1,4 +1,4 @@
-package ua.hillel.concurrency;
+package ua.hillel.concurrency.lesson1;
 
 import java.util.concurrent.TimeUnit;
 
