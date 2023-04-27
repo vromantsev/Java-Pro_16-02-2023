@@ -24,9 +24,9 @@ public class DeadlockDemo implements Runnable {
     }
 
     private void processSecond() {
-        synchronized (monitor1) {
+        synchronized (monitor2) {
             System.out.println("SECOND: Obtained monitor2");
-            synchronized (monitor2) {
+            synchronized (monitor1) {
                 System.out.println("SECOND: Obtained monitor1");
                 try {
                     TimeUnit.MILLISECONDS.sleep(500);
