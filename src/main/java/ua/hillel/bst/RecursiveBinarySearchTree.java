@@ -63,15 +63,15 @@ public class RecursiveBinarySearchTree<T extends Comparable<T>> implements Binar
     }
 
     private boolean contains(Node<T> node, T element) {
-        if (node == null) {
+        if (node == null) { // recursion exit condition
             return false;
         }
-        var result = node.getElement().compareTo(element);
-        if (result > 0) {
+        int result = node.getElement().compareTo(element);// compare node.getElement() vs element
+        if (result > 0) { // node.getElement() > element
             return contains(node.getLeft(), element);
-        } else if (result < 0) {
+        } else if (result < 0) { // node.getElement() < element
             return contains(node.getRight(), element);
-        } else {
+        } else { // node.getElement() = element
             return true;
         }
     }
@@ -82,10 +82,9 @@ public class RecursiveBinarySearchTree<T extends Comparable<T>> implements Binar
         if (this.root != null) {
             var rootCopy = this.root;
             while (rootCopy.getLeft() != null) {
-                var left = rootCopy.getLeft();
-                min = left.getElement();
                 rootCopy = rootCopy.getLeft();
             }
+            min = rootCopy.getElement();
         }
         return min;
     }
@@ -96,32 +95,35 @@ public class RecursiveBinarySearchTree<T extends Comparable<T>> implements Binar
         if (this.root != null) {
             var rootCopy = this.root;
             while (rootCopy.getRight() != null) {
-                var right = rootCopy.getRight();
-                max = right.getElement();
                 rootCopy = rootCopy.getRight();
             }
+            max = rootCopy.getElement();
         }
         return max;
     }
 
     @Override
     public int depth() {
-        if (this.root == null) {
+        // root == null
+        if (root == null) {
             return 0;
         }
-        return Math.max(depth(root.getLeft()), depth(root.getRight()));
+        // root != null -> iterate over left and right subtree -> left compare to right -> max depth
+        return Math.max(depth(root.getLeft()), depth(root.getRight())); // left=3 vs right=4
     }
 
     private int depth(Node<T> node) {
         if (node == null) {
             return 0;
         }
-        return Math.max(1 + depth(node.getLeft()), 1 + depth(node.getRight()));
+        int leftDepth = 1 + depth(node.getLeft());
+        int rightDepth = 1 + depth(node.getRight());
+        return Math.max(leftDepth, rightDepth);
     }
 
     @Override
     public void inOrderTraversal() {
-        inOrderTraversal(root, value -> System.out.printf("%d ", value));
+        inOrderTraversal(root, arg -> System.out.printf("%d ", arg));
     }
 
     private void inOrderTraversal(Node<T> node, Consumer<T> action) {
