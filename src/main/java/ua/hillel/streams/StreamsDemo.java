@@ -30,7 +30,7 @@ public class StreamsDemo {
                 //.toList(); // immutable list
     }
 
-    private static List<User> getUsers() {
+    static List<User> getUsers() {
         return new ArrayList<>(
                 Arrays.asList(
                         new User("John", "Doe", "jd@gmail.com", User.Gender.MALE, 30),
