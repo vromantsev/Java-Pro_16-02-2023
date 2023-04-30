@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class StremsDemo {
+public class StreamsDemo {
     public static void main(String[] args) {
         var products = getProducts();
         System.out.println("Last 3 products: ");
