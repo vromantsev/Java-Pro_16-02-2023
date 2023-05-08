@@ -1,4 +1,4 @@
-package ua.hillel.jdbc;
+package ua.hillel.jdbc.utils;
 
 import org.postgresql.ds.PGSimpleDataSource;
 
