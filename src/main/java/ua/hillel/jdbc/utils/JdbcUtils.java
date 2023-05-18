@@ -5,10 +5,7 @@ import org.postgresql.ds.PGSimpleDataSource;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Properties;
 import java.util.Set;
 
@@ -40,9 +37,16 @@ public class JdbcUtils {
         return dataSource;
     }
 
+    public static Connection getConnection() throws SQLException {
+        Properties props = loadProperties();
+        return DriverManager.getConnection(
+                props.getProperty(DB_URL), props.getProperty(DB_USERNAME), props.getProperty(DB_PASSWORD)
+        );
+    }
+
     public static void main(String[] args) {
         var dataSource = initDataSource();
-        try (Connection connection = dataSource.getConnection()) {
+        try (Connection connection = getConnection()) {
             DatabaseMetaData databaseMetaData = connection.getMetaData();
             ResultSet tables = databaseMetaData.getTables(null, null, null, null);
             while (tables.next()) {
