@@ -72,7 +72,7 @@ public class ProductJdbcOperations implements JdbcOperations<Product, Long> {
     }
 
     @Override
-    public void update(final Product entity) {
+    public Product update(final Product entity) {
         Objects.requireNonNull(entity);
         if (entity.getId() == null) {
             throw new JdbcOperationException("Entity without id cannot be updated!");
@@ -93,6 +93,7 @@ public class ProductJdbcOperations implements JdbcOperations<Product, Long> {
             if (rowsUpdated < 1) {
                 throw new JdbcOperationException("No rows were updated!");
             }
+            return entity;
         } catch (SQLException e) {
             throw new JdbcOperationException("Failed to update a product: %s".formatted(entity), e);
         }
