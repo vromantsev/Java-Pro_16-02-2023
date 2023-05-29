@@ -1,9 +1,10 @@
 package ua.hillel.jdbc.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Product {
+public class Product implements Serializable {
 
     // MongoDB - string '92034uoiawye2qo43uooueauo'
     // UUID -> 128 '92034u-oiawye2q-o43uoou-eauo'
