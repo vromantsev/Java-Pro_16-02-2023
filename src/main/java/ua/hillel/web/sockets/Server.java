@@ -1,4 +1,4 @@
-package ua.hillel.web;
+package ua.hillel.web.sockets;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

@@ -1,19 +1,22 @@
 package ua.hillel.jdbc.operations.impl;
 
+import org.springframework.stereotype.Repository;
 import ua.hillel.jdbc.entity.Product;
 import ua.hillel.jdbc.exceptions.JdbcOperationException;
 import ua.hillel.jdbc.operations.JdbcOperations;
+import ua.hillel.jdbc.utils.JdbcUtils;
 
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.Objects;
 
+@Repository
 public class ProductJdbcOperations implements JdbcOperations<Product, Long> {
 
     private final DataSource dataSource;
 
-    public ProductJdbcOperations(final DataSource dataSource) {
-        this.dataSource = dataSource;
+    public ProductJdbcOperations() {
+        this.dataSource = JdbcUtils.initDataSource();
     }
 
     @Override

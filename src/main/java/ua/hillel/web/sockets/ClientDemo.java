@@ -1,4 +1,4 @@
-package ua.hillel.web;
+package ua.hillel.web.sockets;
 
 import ua.hillel.jdbc.entity.Product;
 

@@ -1,4 +1,4 @@
-package ua.hillel.web;
+package ua.hillel.web.sockets;
 
 import ua.hillel.jdbc.entity.Product;
 
@@ -7,8 +7,8 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.logging.Logger;
 
-import static ua.hillel.web.Server.HOST;
-import static ua.hillel.web.Server.PORT;
+import static ua.hillel.web.sockets.Server.HOST;
+import static ua.hillel.web.sockets.Server.PORT;
 
 public class Client {
 

@@ -1,10 +1,12 @@
 package ua.hillel.testing;
 
+import org.springframework.stereotype.Service;
 import ua.hillel.jdbc.entity.Product;
 import ua.hillel.jdbc.operations.JdbcOperations;
 
 import java.util.Objects;
 
+@Service
 public class DefaultProductService implements ProductService {
 
     private JdbcOperations<Product, Long> jdbcOperations;

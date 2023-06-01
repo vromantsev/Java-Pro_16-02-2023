@@ -16,7 +16,7 @@ public class DefaultProductServiceTest {
 
     @BeforeAll
     public static void setup() {
-        productService = new DefaultProductService(new ProductJdbcOperations(JdbcUtils.initDataSource()));
+        //productService = new DefaultProductService(new ProductJdbcOperations(JdbcUtils.initDataSource()));
     }
 
     @AfterAll

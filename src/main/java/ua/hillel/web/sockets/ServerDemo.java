@@ -1,4 +1,4 @@
-package ua.hillel.web;
+package ua.hillel.web.sockets;
 
 public class ServerDemo {
     public static void main(String[] args) {
