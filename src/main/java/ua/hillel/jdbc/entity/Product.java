@@ -8,6 +8,15 @@ public class Product implements Serializable {
 
     // MongoDB - string '92034uoiawye2qo43uooueauo'
     // UUID -> 128 '92034u-oiawye2q-o43uoou-eauo'
+    /*
+    * <xml version=??? scheme />
+    * <product>
+        <id>111<</id>
+        <name>Camera</name>
+        <price>12500</price>
+        <createdAt></createdAt>
+    * </product>
+    * */
     private Long id;
     private String name;
     private double price;
