@@ -6,7 +6,7 @@ public interface JdbcOperations<T, ID> {
 
     T findById(ID id);
 
-    void update(T entity);
+    T update(T entity);
 
     boolean delete(ID id);
 
