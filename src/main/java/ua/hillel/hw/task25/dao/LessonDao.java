@@ -24,6 +24,7 @@ public class LessonDao implements GenericDao<Lesson, Long> {
         try {
             connection = connectionManager.getConnection();
 
+            return null;
         } catch (SQLException e) {
             throw new JdbcOperationException(e.getMessage(), e);
         } finally {
