@@ -28,10 +28,6 @@ public class SimplePassengerRepository implements PassengerRepository {
 
     @Override
     public Passenger create(final Passenger passenger) {
-        Objects.requireNonNull(passenger);
-        if (!Objects.isNull(passenger.getId())) {
-            throw new IllegalArgumentException("Cannot create passenger with an id!");
-        }
         SimpleJdbcInsert insert = new SimpleJdbcInsert(jdbcTemplate)
                 .withTableName("passenger")
                 .usingGeneratedKeyColumns("id");
@@ -58,6 +54,13 @@ public class SimplePassengerRepository implements PassengerRepository {
                 WHERE first_name = ? AND last_name = ?
                 """;
         return jdbcTemplate.queryForObject(sql, passengerRowMapper, firstName, lastName);
+    }
+
+    @Override
+    public Passenger findById(final Long id) {
+        Objects.requireNonNull(id);
+        var sql = "SELECT id, first_name, last_name, email FROM passenger WHERE id = ?";
+        return jdbcTemplate.queryForObject(sql, this.passengerRowMapper, id);
     }
 
     @Override

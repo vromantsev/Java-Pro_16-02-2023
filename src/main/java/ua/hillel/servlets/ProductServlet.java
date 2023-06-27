@@ -2,7 +2,6 @@ package ua.hillel.servlets;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -29,7 +28,7 @@ public class ProductServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         this.objectMapper = new ObjectMapper();
-        this.objectMapper.registerModule(new JavaTimeModule());
+        //this.objectMapper.registerModule(new JavaTimeModule());
         this.productService = new DefaultProductService(new ProductJdbcOperations());
     }
 

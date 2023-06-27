@@ -19,7 +19,7 @@ public class PassengerRowMapper implements RowMapper<Passenger> {
         passenger.setFirstName(rs.getString(2));
         passenger.setLastName(rs.getString(3));
         passenger.setEmail(rs.getString(4));
-        Ticket ticket = new Ticket();
+        /*Ticket ticket = new Ticket();
         ticket.setId(rs.getLong(5));
         ticket.setTicketNumber(rs.getString(6));
         ticket.setPrice(rs.getBigDecimal(7));
@@ -27,7 +27,7 @@ public class PassengerRowMapper implements RowMapper<Passenger> {
         ticket.setSeat(rs.getInt(9));
         ticket.setCategory(Enum.valueOf(Category.class, rs.getString(10)));
         ticket.setPassenger(passenger);
-        passenger.getTickets().add(ticket);
+        passenger.getTickets().add(ticket);*/
         return passenger;
     }
 }
